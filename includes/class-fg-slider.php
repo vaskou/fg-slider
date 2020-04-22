@@ -17,5 +17,6 @@ class FG_Slider {
 	public function init() {
 		FG_Slider_Dependencies::getInstance()->init();
 		FG_Slider_Post_Type::getInstance()->init();
+		FG_Slider_Shortcodes::getInstance()->init();
 	}
 }

@@ -23,5 +23,6 @@ define( 'FG_SLIDER_PLUGIN_URL', plugins_url( FG_SLIDER_PLUGIN_DIR_NAME ) );
 include 'includes/class-fg-slider.php';
 include 'includes/class-fg-slider-dependencies.php';
 include 'includes/class-fg-slider-post-type.php';
+include 'includes/class-fg-slider-shortcodes.php';
 
 FG_Slider::getInstance()->init();

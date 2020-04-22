@@ -98,8 +98,8 @@ class FG_Slider_Post_Type {
 			'id'           => $this->metabox_prefix . 'options',
 			'title'        => __( 'Slider Options', 'fg-slider' ),
 			'object_types' => array( self::POST_TYPE_NAME ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
+			'context'      => 'side',
+			'priority'     => 'low',
 			'show_names'   => true, // Show field names on the left
 		) );
 
@@ -134,8 +134,8 @@ class FG_Slider_Post_Type {
 			'type'    => 'select',
 			'default' => 'disable',
 			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
+				'true'  => __( 'Enable', 'fg-slider' ),
+				'false' => __( 'Disable', 'fg-slider' ),
 			)
 		) );
 
@@ -155,8 +155,8 @@ class FG_Slider_Post_Type {
 			'type'    => 'select',
 			'default' => 'enable',
 			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
+				'true'  => __( 'Enable', 'fg-slider' ),
+				'false' => __( 'Disable', 'fg-slider' ),
 			)
 		) );
 
@@ -176,8 +176,8 @@ class FG_Slider_Post_Type {
 			'type'    => 'select',
 			'default' => 'disable',
 			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
+				'true'  => __( 'Enable', 'fg-slider' ),
+				'false' => __( 'Disable', 'fg-slider' ),
 			)
 		) );
 
@@ -187,8 +187,8 @@ class FG_Slider_Post_Type {
 			'type'    => 'select',
 			'default' => 'enable',
 			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
+				'true'  => __( 'Enable', 'fg-slider' ),
+				'false' => __( 'Disable', 'fg-slider' ),
 			)
 		) );
 
@@ -212,9 +212,22 @@ class FG_Slider_Post_Type {
 		) );
 
 		$cmb2_metabox->add_group_field( $group_field_slides, array(
-			'name' => __( 'Image', 'fg-slider' ),
-			'id'   => 'image',
-			'type' => 'file',
+			'name'         => __( 'Image', 'fg-slider' ),
+			'id'           => 'image',
+			'type'         => 'file',
+			'options'      => array(
+				'url' => false,
+			),
+			'text'         => array(
+				'add_upload_file_text' => 'Add Slide'
+			),
+			'preview_size' => 'thumbnail',
+		) );
+
+		$cmb2_metabox->add_group_field( $group_field_slides, array(
+			'name' => __( 'Link', 'fg-slider' ),
+			'id'   => 'link',
+			'type' => 'text_url',
 		) );
 	}
 
@@ -223,6 +236,45 @@ class FG_Slider_Post_Type {
 	 */
 	public function get_items() {
 		return $this->_get_items();
+	}
+
+	/**
+	 * @param $id
+	 *
+	 * @return int[]|WP_Post[]
+	 */
+	public function get_item( $id ) {
+		$args = array(
+			'p' => $id
+		);
+
+		return $this->_get_items( $args );
+	}
+
+	public function get_slider( $id ) {
+		$item = $this->get_item( $id );
+
+		if ( empty( $item[0] ) ) {
+			return false;
+		}
+
+		$slider_id = $item[0]->ID;
+
+		$slider = array(
+			'options' => array(
+				'type'              => get_post_meta( $slider_id, $this->field_prefix . 'type', true ),
+				'animation'         => get_post_meta( $slider_id, $this->field_prefix . 'animation', true ),
+				'autoplay-interval' => get_post_meta( $slider_id, $this->field_prefix . 'autoplay-interval', true ),
+				'autoplay'          => get_post_meta( $slider_id, $this->field_prefix . 'autoplay', true ),
+				'draggable'         => get_post_meta( $slider_id, $this->field_prefix . 'draggable', true ),
+				'finite'            => get_post_meta( $slider_id, $this->field_prefix . 'finite', true ),
+				'pause-on-hover'    => get_post_meta( $slider_id, $this->field_prefix . 'pause-on-hover', true ),
+			),
+			'slides'  => get_post_meta( $slider_id, $this->field_prefix . 'slides', true )
+		);
+
+		return $slider;
+
 	}
 
 	/**
