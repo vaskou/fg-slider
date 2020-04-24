@@ -25,4 +25,8 @@ include 'includes/class-fg-slider-dependencies.php';
 include 'includes/class-fg-slider-post-type.php';
 include 'includes/class-fg-slider-shortcodes.php';
 
+include 'includes/slider-fields/abstract-class-fg-slider-post-type-fields.php';
+include 'includes/slider-fields/class-fg-slider-option-fields.php';
+include 'includes/slider-fields/class-fg-slider-slides-fields.php';
+
 FG_Slider::getInstance()->init();
