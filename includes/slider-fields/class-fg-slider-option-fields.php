@@ -4,6 +4,18 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 
 	private static $instance;
 
+	private $slider_fields_only = array(
+		'center',
+		'sets'
+	);
+
+	private $slideshow_fields_only = array(
+		'animation',
+		'ratio',
+		'min-height',
+		'max-height'
+	);
+
 	public static function getInstance() {
 		if ( self::$instance == null ) {
 			self::$instance = new self();
@@ -100,7 +112,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 				'options' => array(
 					'true'  => __( 'Enable', 'fg-slider' ),
 					'false' => __( 'Disable', 'fg-slider' ),
-				)
+				),
 			),
 			'items_per_slide'   => array(
 				'name' => __( 'Items Per Slide', 'fg-slider' ),
@@ -117,6 +129,68 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 			),
 		);
 
+		$this->fields = $this->_filter_field_classes( $this->fields );
+
+	}
+
+	public function getPostMeta( $post_id ) {
+
+		$post_meta = parent::getPostMeta( $post_id );
+
+		$filtered_options = array();
+
+		$options = $post_meta[ $this->metabox_id ];
+
+		$filtered_options_keys = $this->_filter_options_keys( $options );
+
+		foreach ( $options as $key => $value ) {
+			if ( ! in_array( $key, $filtered_options_keys ) ) {
+				continue;
+			}
+			$filtered_options[ $key ] = $value;
+		}
+
+		$post_meta[ $this->metabox_id ] = $filtered_options;
+
+		return $post_meta;
+
+	}
+
+	private function _filter_field_classes( $fields ) {
+		foreach ( $fields as $key => &$value ) {
+			$classes = is_array( $value['classes'] ) ? $value['classes'] : ! empty( $value['classes'] ) ? array( $value['classes'] ) : array();
+			if ( in_array( $key, $this->slider_fields_only ) ) {
+				$classes = array_merge( $classes, array( 'show-on-slider', 'show-on' ) );
+			}
+			if ( in_array( $key, $this->slideshow_fields_only ) ) {
+				$classes = array_merge( $classes, array( 'show-on-slideshow', 'show-on' ) );
+			}
+			$value['classes'] = $classes;
+		}
+
+		return $fields;
+	}
+
+	private function _filter_options_keys( $options, $excluded_options = array() ) {
+
+		$filtered_options = array();
+
+		if ( 'slider' == $options['type'] ) {
+			$excluded_options = array_merge( $excluded_options, $this->slideshow_fields_only );
+		}
+
+		if ( 'slideshow' == $options['type'] ) {
+			$excluded_options = array_merge( $excluded_options, $this->slider_fields_only );
+		}
+
+		foreach ( $options as $key => $value ) {
+			if ( in_array( $key, $excluded_options ) ) {
+				continue;
+			}
+			$filtered_options[] = $key;
+		}
+
+		return $filtered_options;
 	}
 
 }
