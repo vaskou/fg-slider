@@ -6,7 +6,8 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 
 	private $slider_fields_only = array(
 		'center',
-		'sets'
+		'sets',
+		'gap',
 	);
 
 	private $slideshow_fields_only = array(
@@ -105,6 +106,15 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 				'name' => __( 'Ratio', 'fg-slider' ),
 				'type' => 'ratio',
 			),
+			'center'              => array(
+				'name'    => __( 'Center', 'fg-slider' ),
+				'type'    => 'select',
+				'default' => 'false',
+				'options' => array(
+					'true'  => __( 'Enable', 'fg-slider' ),
+					'false' => __( 'Disable', 'fg-slider' ),
+				),
+			),
 			'sets'              => array(
 				'name'    => __( 'Sets', 'fg-slider' ),
 				'type'    => 'select',
@@ -117,6 +127,17 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 			'items_per_slide'   => array(
 				'name' => __( 'Items Per Slide', 'fg-slider' ),
 				'type' => 'items_per_slide',
+			),
+			'gap'               => array(
+				'name'    => __( 'Slides Gap', 'fg-slider' ),
+				'type'    => 'select',
+				'default' => 'none',
+				'options' => array(
+					'none'   => __( 'None', 'fg-slider' ),
+					'small'  => __( 'Small', 'fg-slider' ),
+					'medium' => __( 'Medium', 'fg-slider' ),
+					'large'  => __( 'Large', 'fg-slider' ),
+				),
 			),
 			'navigation_arrows' => array(
 				'name'    => __( 'Navigation Arrows', 'fg-slider' ),

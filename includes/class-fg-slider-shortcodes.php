@@ -37,7 +37,7 @@ class FG_Slider_Shortcodes {
 		}
 
 		$slider = FG_Slider_Post_Type::getInstance()->get_slider( $args['id'] );
-//		var_dump( $slider );
+
 		if ( empty( $slider['slides']['items'] ) || empty( $slider['options'] ) ) {
 			return '';
 		}
@@ -46,15 +46,18 @@ class FG_Slider_Shortcodes {
 		$slides  = $slider['slides']['items'];
 
 		$type = $options['type'];
+		//TODO: add gap option
+		$formatted_options = $this->_format_options( $options );
 
-		$formatted_options       = $this->_format_options( $options );
 		$items_per_slide_classes = 'slider' == $type ? $this->_get_items_per_slide_classes( $options ) : '';
+
+		$gap_classes = 'slider' == $type ? $this->_get_gap_classes( $options ) : '';
 
 		ob_start();
 		?>
         <div uk-<?php echo $type; ?>="<?php echo $formatted_options; ?>">
             <div class="uk-position-relative uk-visible-toggle uk-light">
-                <ul class="uk-<?php echo $type; ?>-items <?php echo $items_per_slide_classes; ?>">
+                <ul class="uk-<?php echo $type; ?>-items <?php echo $items_per_slide_classes; ?> <?php echo $gap_classes; ?>">
 					<?php
 					foreach ( $slides as $slide ):
 						?>
@@ -103,29 +106,13 @@ class FG_Slider_Shortcodes {
 	 */
 	private function _format_options( $options = array() ) {
 		$formatted_options = '';
-
+		//TODO: excluded_options convert to general variable
 		$excluded_options = array(
 			'type',
 			'navigation_arrows',
 			'items_per_slide',
+			'gap'
 		);
-
-		if ( 'slider' == $options['type'] ) {
-			$excluded_options = array_merge( $excluded_options, array(
-				'animation',
-				'ratio',
-				'min-height',
-				'max-height'
-			) );
-		}
-
-		if ( 'slideshow' == $options['type'] ) {
-			$excluded_options = array_merge( $excluded_options, array(
-				'center',
-				'sets'
-			) );
-		}
-
 
 		foreach ( $options as $option_name => $option ) {
 
@@ -164,5 +151,13 @@ class FG_Slider_Shortcodes {
 		}
 
 		return implode( ' ', $classes );
+	}
+
+	private function _get_gap_classes( $options ) {
+		if ( empty( $options['gap'] ) ) {
+			return '';
+		}
+
+		return 'uk-grid uk-grid-' . $options['gap'];
 	}
 }
