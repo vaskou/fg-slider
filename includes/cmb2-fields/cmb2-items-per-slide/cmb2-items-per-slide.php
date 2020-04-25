@@ -1,8 +1,8 @@
 <?php
 
-class CMB2_Type_Ratio {
+class CMB2_Type_Items_Per_Slide {
 
-	const FIELD_TYPE = 'ratio';
+	const FIELD_TYPE = 'items_per_slide';
 
 	private static $single_instance;
 
@@ -31,31 +31,39 @@ class CMB2_Type_Ratio {
 	 */
 	public function render( $field, $escaped_value, $object_id, $object_type, $field_type ) {
 		ob_start();
+
+		$breakpoints = array(
+			's'  => __( 'Small', 'fg-slider' ),
+			'm'  => __( 'Medium', 'fg-slider' ),
+			'l'  => __( 'Large', 'fg-slider' ),
+			'xl' => __( 'Extra Large', 'fg-slider' ),
+		);
+
 		?>
-        <div class="ratio-field-wrapper">
-	        <?php
-	        $args = array(
-		        'type'  => 'number',
-		        'id'    => $field_type->_id( '_ratio_width' ),
-		        'name'  => $field_type->_name( '[width]' ),
-		        'value' => $escaped_value['width'],
-	        );
-	        ?>
+        <div class="items-per-slide-field-wrapper">
+			<?php
 
-            <div class="ratio-width">
-		        <?php echo $field_type->input( $args ); ?>
-            </div>
+			foreach ( $breakpoints as $key => $breakpoint ):
+				$args = array(
+					'type'  => 'number',
+					'id'    => $field_type->_id( '_ips_' . $key ),
+					'name'  => $field_type->_name( '[' . $key . ']' ),
+					'value' => $escaped_value[ $key ],
+					'max'   => 6,
+					'min'   => 1
+				);
 
-	        <?php
-	        $args['id']    = $field_type->_id( '_ratio_height' );
-	        $args['name']  = $field_type->_name( '[height]' );
-	        $args['value'] = $escaped_value['height'];
+				?>
+                <div class="items-per-slide-<?php echo $key; ?>">
+                    <label><?php echo $breakpoint; ?></label>
+					<?php echo $field_type->input( $args ); ?>
+                </div>
+			<?php
 
-	        ?>
+			endforeach;
 
-            <div class="ratio-height">
-				<?php echo $field_type->input( $args ); ?>
-            </div>
+			?>
+
         </div>
 		<?php
 
@@ -97,4 +105,4 @@ class CMB2_Type_Ratio {
 
 }
 
-CMB2_Type_Ratio::get_instance();
+CMB2_Type_Items_Per_Slide::get_instance();

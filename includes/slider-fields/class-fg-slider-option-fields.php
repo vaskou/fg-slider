@@ -93,7 +93,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 				'name' => __( 'Ratio', 'fg-slider' ),
 				'type' => 'ratio',
 			),
-			'sets'    => array(
+			'sets'              => array(
 				'name'    => __( 'Sets', 'fg-slider' ),
 				'type'    => 'select',
 				'default' => 'false',
@@ -102,7 +102,11 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 					'false' => __( 'Disable', 'fg-slider' ),
 				)
 			),
-			'navigation_arrows'    => array(
+			'items_per_slide'   => array(
+				'name' => __( 'Items Per Slide', 'fg-slider' ),
+				'type' => 'items_per_slide',
+			),
+			'navigation_arrows' => array(
 				'name'    => __( 'Navigation Arrows', 'fg-slider' ),
 				'type'    => 'select',
 				'default' => 'false',

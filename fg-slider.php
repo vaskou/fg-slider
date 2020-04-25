@@ -30,5 +30,6 @@ include 'includes/slider-fields/class-fg-slider-option-fields.php';
 include 'includes/slider-fields/class-fg-slider-slides-fields.php';
 
 include 'includes/cmb2-fields/cmb2-ratio/cmb2-ratio.php';
+include 'includes/cmb2-fields/cmb2-items-per-slide/cmb2-items-per-slide.php';
 
 FG_Slider::getInstance()->init();
