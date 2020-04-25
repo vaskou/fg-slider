@@ -37,42 +37,54 @@ class FG_Slider_Shortcodes {
 		}
 
 		$slider = FG_Slider_Post_Type::getInstance()->get_slider( $args['id'] );
-
-		if ( empty( $slider['slides'] ) ) {
+//		var_dump( $slider );
+		if ( empty( $slider['slides']['items'] ) || empty( $slider['options'] ) ) {
 			return '';
 		}
 
 		$options = $slider['options'];
-		$slides  = $slider['slides'];
+		$slides  = $slider['slides']['items'];
 
 		$formatted_options = $this->_format_slider_options( $options );
 
 		ob_start();
 		?>
         <div uk-<?php echo $options['type']; ?>="<?php echo $formatted_options; ?>">
-            <ul class="uk-<?php echo $options['type']; ?>-items">
-				<?php
-				foreach ( $slides as $slide ):
-					?>
-                    <li>
-						<?php
-						if ( ! empty( $slide['link'] ) ):
+            <div class="uk-position-relative uk-visible-toggle uk-light">
+                <ul class="uk-<?php echo $options['type']; ?>-items">
+					<?php
+					foreach ( $slides as $slide ):
 						?>
-                        <a href="<?php echo $slide['link']; ?>">
+                        <li>
 							<?php
-							endif;
-							echo wp_get_attachment_image( $slide['image_id'], 'full' );
 							if ( ! empty( $slide['link'] ) ):
 							?>
-                        </a>
+                            <a href="<?php echo $slide['link']; ?>">
+								<?php
+								endif;
+
+								echo wp_get_attachment_image( $slide['image_id'], 'full' );
+
+								if ( ! empty( $slide['link'] ) ):
+								?>
+                            </a>
+						<?php
+						endif;
+						?>
+                        </li>
 					<?php
-					endif;
+					endforeach;
 					?>
-                    </li>
+                </ul>
 				<?php
-				endforeach;
+				if ( ! empty( $options['navigation_arrows'] ) && 'true' == $options['navigation_arrows'] ):
+					?>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+				<?php
+				endif;
 				?>
-            </ul>
+            </div>
         </div>
 		<?php
 		$html = ob_get_clean();
@@ -89,8 +101,18 @@ class FG_Slider_Shortcodes {
 	private function _format_slider_options( $options = array() ) {
 		$formatted_options = '';
 		foreach ( $options as $option_name => $option ) {
-			if ( 'type' == $option_name ) {
+			$excluded_options = array( 'type', 'navigation_arrows' );
+			if ( in_array( $option_name, $excluded_options ) ) {
 				continue;
+			}
+			if ( empty( $option ) ) {
+				continue;
+			}
+			if ( 'ratio' == $option_name ) {
+				if ( empty( $option['width'] ) || empty( $option['height'] ) ) {
+					continue;
+				}
+				$option = $option['width'] . ':' . $option['height'];
 			}
 			$formatted_options .= $option_name . ': ' . $option . ';';
 		}

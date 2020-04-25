@@ -126,21 +126,11 @@ class FG_Slider_Post_Type {
 
 		$slider_id = $item[0]->ID;
 
-		$slider = array();
+		$options = FG_Slider_Option_Fields::getInstance()->getPostMeta( $slider_id );
 
-		$field_prefix   = FG_Slider_Option_Fields::getInstance()->getFieldMetaKeyPrefix();
-		$options_fields = FG_Slider_Option_Fields::getInstance()->getFields();
-		$slides_fields  = FG_Slider_Slides_Fields::getInstance()->getFields();
+		$slides = FG_Slider_Slides_Fields::getInstance()->getPostMeta( $slider_id );
 
-		foreach ( $options_fields as $key => $args ) {
-			$slider['options'][ $key ] = get_post_meta( $slider_id, $field_prefix . $key, true );
-		}
-
-		$field_prefix   = FG_Slider_Slides_Fields::getInstance()->getFieldMetaKeyPrefix();
-		$slides_fields  = FG_Slider_Slides_Fields::getInstance()->getFields();
-		foreach ( $slides_fields as $key => $args ) {
-			$slider[ $key ] = get_post_meta( $slider_id, $field_prefix . $key, true );
-		}
+		$slider = array_merge( $options, $slides );
 
 		return $slider;
 

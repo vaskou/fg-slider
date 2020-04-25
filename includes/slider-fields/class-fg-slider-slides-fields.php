@@ -16,7 +16,7 @@ class FG_Slider_Slides_Fields extends FG_Slider_Post_Type_Fields {
 		$this->metabox_id    = 'slides';
 		$this->metabox_title = __( 'Slides', 'fg-slider' );
 		$this->fields        = array(
-			'slides' => array(
+			'items' => array(
 				'name'  => __( 'Slide', 'fg-slider' ),
 				'type'   => 'group',
 				'fields' => array(

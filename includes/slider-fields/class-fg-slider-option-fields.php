@@ -40,7 +40,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 			'autoplay'          => array(
 				'name'    => __( 'Autoplay', 'fg-slider' ),
 				'type'    => 'select',
-				'default' => 'disable',
+				'default' => 'false',
 				'options' => array(
 					'true'  => __( 'Enable', 'fg-slider' ),
 					'false' => __( 'Disable', 'fg-slider' ),
@@ -57,7 +57,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 			'draggable'         => array(
 				'name'    => __( 'Draggable', 'fg-slider' ),
 				'type'    => 'select',
-				'default' => 'enable',
+				'default' => 'true',
 				'options' => array(
 					'true'  => __( 'Enable', 'fg-slider' ),
 					'false' => __( 'Disable', 'fg-slider' ),
@@ -74,7 +74,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 			'finite'            => array(
 				'name'    => __( 'Finite', 'fg-slider' ),
 				'type'    => 'select',
-				'default' => 'disable',
+				'default' => 'false',
 				'options' => array(
 					'true'  => __( 'Enable', 'fg-slider' ),
 					'false' => __( 'Disable', 'fg-slider' ),
@@ -83,7 +83,29 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 			'pause-on-hover'    => array(
 				'name'    => __( 'Pause On Hover', 'fg-slider' ),
 				'type'    => 'select',
-				'default' => 'enable',
+				'default' => 'true',
+				'options' => array(
+					'true'  => __( 'Enable', 'fg-slider' ),
+					'false' => __( 'Disable', 'fg-slider' ),
+				)
+			),
+			'ratio'             => array(
+				'name' => __( 'Ratio', 'fg-slider' ),
+				'type' => 'ratio',
+			),
+			'sets'    => array(
+				'name'    => __( 'Sets', 'fg-slider' ),
+				'type'    => 'select',
+				'default' => 'false',
+				'options' => array(
+					'true'  => __( 'Enable', 'fg-slider' ),
+					'false' => __( 'Disable', 'fg-slider' ),
+				)
+			),
+			'navigation_arrows'    => array(
+				'name'    => __( 'Navigation Arrows', 'fg-slider' ),
+				'type'    => 'select',
+				'default' => 'false',
 				'options' => array(
 					'true'  => __( 'Enable', 'fg-slider' ),
 					'false' => __( 'Disable', 'fg-slider' ),

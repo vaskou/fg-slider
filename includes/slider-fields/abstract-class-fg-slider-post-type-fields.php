@@ -44,13 +44,23 @@ abstract class FG_Slider_Post_Type_Fields {
 		return $this->fields;
 	}
 
+	public function getPostMeta( $post_id ) {
+		$post_meta    = array();
+		$field_prefix = $this->getFieldMetaKeyPrefix();
+
+		foreach ( $this->fields as $key => $args ) {
+			$post_meta[ $this->metabox_id ][ $key ] = get_post_meta( $post_id, $field_prefix . $key, true );
+		}
+
+		return $post_meta;
+	}
 
 
 	public function getFieldMetaKeyPrefix() {
 		return $this->getPrefixFieldId() . $this->getMetaboxId() . '_';
 	}
 
-	public function addMetaboxes( $post_type,$context = 'normal', $priority = 'high' ) {
+	public function addMetaboxes( $post_type, $context = 'normal', $priority = 'high' ) {
 		if ( ! function_exists( 'new_cmb2_box' ) ) {
 			return;
 		}
@@ -82,7 +92,7 @@ abstract class FG_Slider_Post_Type_Fields {
 		foreach ( $this->fields as $id => $values ) {
 
 			$defaults = array(
-				'id'   => $this->getFieldMetaKeyPrefix() . $id,
+				'id' => $this->getFieldMetaKeyPrefix() . $id,
 			);
 
 			$args = wp_parse_args( $values, $defaults );
@@ -134,7 +144,7 @@ abstract class FG_Slider_Post_Type_Fields {
 		foreach ( $args['fields'] as $id => $values ) {
 
 			$defaults = array(
-				'id'   => $id,
+				'id' => $id,
 			);
 
 			$args = wp_parse_args( $values, $defaults );

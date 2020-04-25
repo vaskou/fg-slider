@@ -1,0 +1,5 @@
+.ratio-width,
+.ratio-height {
+    display: inline-block;
+    max-width: 48%;
+}
