@@ -106,7 +106,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 				'name' => __( 'Ratio', 'fg-slider' ),
 				'type' => 'ratio',
 			),
-			'center'              => array(
+			'center'            => array(
 				'name'    => __( 'Center', 'fg-slider' ),
 				'type'    => 'select',
 				'default' => 'false',
@@ -179,7 +179,7 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 
 	private function _filter_field_classes( $fields ) {
 		foreach ( $fields as $key => &$value ) {
-			$classes = is_array( $value['classes'] ) ? $value['classes'] : ! empty( $value['classes'] ) ? array( $value['classes'] ) : array();
+			$classes = ! empty( $value['classes'] ) && is_array( $value['classes'] ) ? $value['classes'] : ! empty( $value['classes'] ) ? array( $value['classes'] ) : array();
 			if ( in_array( $key, $this->slider_fields_only ) ) {
 				$classes = array_merge( $classes, array( 'show-on-slider', 'show-on' ) );
 			}

@@ -5,9 +5,9 @@ abstract class FG_Slider_Post_Type_Fields {
 	private $prefix_metabox_id = 'fg_slider_metabox_';
 	private $prefix_field_id = 'fg_slider_';
 
-	protected $metabox_id;
-	protected $metabox_title;
-	protected $fields;
+	protected $metabox_id = '';
+	protected $metabox_title = '';
+	protected $fields = array();
 
 	/**
 	 * @return string
