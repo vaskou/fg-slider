@@ -48,7 +48,7 @@ class CMB2_Type_Items_Per_Slide {
 					'type'  => 'number',
 					'id'    => $field_type->_id( '_ips_' . $key ),
 					'name'  => $field_type->_name( '[' . $key . ']' ),
-					'value' => $escaped_value[ $key ],
+					'value' => ! empty( $escaped_value[ $key ] ) ? $escaped_value[ $key ] : '',
 					'max'   => 6,
 					'min'   => 1
 				);
