@@ -59,7 +59,17 @@ class FG_Slider_Shortcodes {
             <div class="uk-position-relative uk-visible-toggle uk-light">
                 <ul class="uk-<?php echo $type; ?>-items <?php echo $items_per_slide_classes; ?> <?php echo $gap_classes; ?>">
 					<?php
+					$counter = 0;
+					$count   = count( $slides );
+
 					foreach ( $slides as $slide ):
+						$attr['uk-img'] = "target: !li -*, !li +*";
+						$counter ++;
+						if ( 1 == $counter ):
+							$attr['uk-img'] = "target: !ul > :last-child, !li +*";
+                        elseif ( $count == $counter ):
+							$attr['uk-img'] = "target: !li -*, !ul > :first-child";
+						endif;
 						?>
                         <li>
 							<?php
@@ -69,7 +79,7 @@ class FG_Slider_Shortcodes {
 								<?php
 								endif;
 
-								echo wp_get_attachment_image( $slide['image_id'], 'full' );
+								echo wp_get_attachment_image( $slide['image_id'], 'full', false, $attr );
 
 								if ( ! empty( $slide['link'] ) ):
 								?>
