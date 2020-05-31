@@ -71,22 +71,32 @@ class FG_Slider_Shortcodes {
 							$attr['uk-img'] = "target: !li -*, !ul > :first-child";
 						endif;
 						?>
-                        <li>
+                        <li class="uk-flex uk-flex-center uk-flex-wrap uk-flex-bottom">
 							<?php
-							if ( ! empty( $slide['link'] ) ):
+							if ( 'slider' == $type && ! empty( $slide['title'] ) ):
+								?>
+                                <h5 class="fg-slider-title uk-width-1-1"><?php echo $slide['title']; ?></h5>
+							<?php
+							endif;
+
 							?>
-                            <a href="<?php echo $slide['link']; ?>">
+                            <div class="fg-slider-image uk-width-1-1">
 								<?php
-								endif;
-
-								echo wp_get_attachment_image( $slide['image_id'], 'full', false, $attr );
-
 								if ( ! empty( $slide['link'] ) ):
 								?>
-                            </a>
-						<?php
-						endif;
-						?>
+                                <a href="<?php echo $slide['link']; ?>">
+									<?php
+									endif;
+
+									echo wp_get_attachment_image( $slide['image_id'], 'full', false, $attr );
+
+									if ( ! empty( $slide['link'] ) ):
+									?>
+                                </a>
+							<?php
+							endif;
+							?>
+                            </div>
                         </li>
 					<?php
 					endforeach;

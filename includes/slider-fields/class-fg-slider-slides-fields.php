@@ -35,6 +35,10 @@ class FG_Slider_Slides_Fields extends FG_Slider_Post_Type_Fields {
 						'name' => __( 'Link', 'fg-slider' ),
 						'type' => 'text_url',
 					),
+					'title'  => array(
+						'name' => __( 'Title', 'fg-slider' ),
+						'type' => 'text',
+					),
 				)
 			),
 		);
