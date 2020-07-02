@@ -8,8 +8,6 @@ class FG_Slider_Post_Type {
 	const POST_TYPE_SLUG = 'slider';
 
 	private static $instance = null;
-	private $metabox_prefix = 'fg_slider_metabox_';
-	private $field_prefix = 'fg_slider_';
 
 	/**
 	 * FG_Guitars_Post_Type constructor.
@@ -94,128 +92,9 @@ class FG_Slider_Post_Type {
 	 * Adds metaboxes
 	 */
 	public function add_metaboxes() {
-		$cmb2_metabox = new_cmb2_box( array(
-			'id'           => $this->metabox_prefix . 'options',
-			'title'        => __( 'Slider Options', 'fg-slider' ),
-			'object_types' => array( self::POST_TYPE_NAME ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true, // Show field names on the left
-		) );
 
-		$cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'type',
-			'name'    => __( 'Type', 'fg-slider' ),
-			'type'    => 'select',
-			'default' => 'slider',
-			'options' => array(
-				'slider'    => __( 'Slider', 'fg-slider' ),
-				'slideshow' => __( 'Slideshow', 'fg-slider' ),
-			)
-		) );
-
-		$cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'animation',
-			'name'    => __( 'Animation', 'fg-slider' ),
-			'type'    => 'select',
-			'default' => 'slide',
-			'options' => array(
-				'fade'  => __( 'Fade', 'fg-slider' ),
-				'pull'  => __( 'Pull', 'fg-slider' ),
-				'push'  => __( 'Push', 'fg-slider' ),
-				'scale' => __( 'Scale', 'fg-slider' ),
-				'slide' => __( 'Slide', 'fg-slider' ),
-			),
-		) );
-
-		$cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'autoplay',
-			'name'    => __( 'Autoplay', 'fg-slider' ),
-			'type'    => 'select',
-			'default' => 'disable',
-			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
-			)
-		) );
-
-		$cmb2_metabox->add_field( array(
-			'id'         => $this->field_prefix . 'autoplay-interval',
-			'name'       => __( 'Autoplay Interval', 'fg-slider' ),
-			'type'       => 'text',
-			'default'    => 7000,
-			'attributes' => array(
-				'type' => 'number',
-			)
-		) );
-
-		$cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'draggable',
-			'name'    => __( 'Draggable', 'fg-slider' ),
-			'type'    => 'select',
-			'default' => 'enable',
-			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
-			)
-		) );
-
-//		$cmb2_metabox->add_field( array(
-//			'id'      => $this->field_prefix . 'easing',
-//			'name'    => __( 'Easing', 'fg-slider' ),
-//			'type'    => 'select',
-//			'default' => 'ease',
-//			'options' => array(
-//				'ease'  => __( 'Ease', 'fg-slider' ),
-//			),
-//		) );
-
-		$cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'finite',
-			'name'    => __( 'Finite', 'fg-slider' ),
-			'type'    => 'select',
-			'default' => 'disable',
-			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
-			)
-		) );
-
-		$cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'pause-on-hover',
-			'name'    => __( 'Pause On Hover', 'fg-slider' ),
-			'type'    => 'select',
-			'default' => 'enable',
-			'options' => array(
-				'enable'  => __( 'Enable', 'fg-slider' ),
-				'disable' => __( 'Disable', 'fg-slider' ),
-			)
-		) );
-
-		$cmb2_metabox = new_cmb2_box( array(
-			'id'           => $this->metabox_prefix . 'slides',
-			'title'        => __( 'Slides', 'fg-slider' ),
-			'object_types' => array( self::POST_TYPE_NAME ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true, // Show field names on the left
-		) );
-
-		$group_field_slides = $cmb2_metabox->add_field( array(
-			'id'      => $this->field_prefix . 'slides',
-			'type'    => 'group',
-			'options' => array(
-				'group_title'   => __( 'Slide {#}', 'fg-slider' ),
-				'add_button'    => __( 'Add Another Slide', 'fg-slider' ),
-				'remove_button' => __( 'Remove Slide', 'fg-slider' ),
-			)
-		) );
-
-		$cmb2_metabox->add_group_field( $group_field_slides, array(
-			'name' => __( 'Image', 'fg-slider' ),
-			'id'   => 'image',
-			'type' => 'file',
-		) );
+		FG_Slider_Option_Fields::getInstance()->addMetaboxes( self::POST_TYPE_NAME, 'side', 'low' );
+		FG_Slider_Slides_Fields::getInstance()->addMetaboxes( self::POST_TYPE_NAME );
 	}
 
 	/**
@@ -223,6 +102,38 @@ class FG_Slider_Post_Type {
 	 */
 	public function get_items() {
 		return $this->_get_items();
+	}
+
+	/**
+	 * @param $id
+	 *
+	 * @return int[]|WP_Post[]
+	 */
+	public function get_item( $id ) {
+		$args = array(
+			'p' => $id
+		);
+
+		return $this->_get_items( $args );
+	}
+
+	public function get_slider( $id ) {
+		$item = $this->get_item( $id );
+
+		if ( empty( $item[0] ) ) {
+			return false;
+		}
+
+		$slider_id = $item[0]->ID;
+
+		$options = FG_Slider_Option_Fields::getInstance()->getPostMeta( $slider_id );
+
+		$slides = FG_Slider_Slides_Fields::getInstance()->getPostMeta( $slider_id );
+
+		$slider = array_merge( $options, $slides );
+
+		return $slider;
+
 	}
 
 	/**

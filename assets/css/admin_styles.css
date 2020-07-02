@@ -1,0 +1,26 @@
+.ratio-width,
+.ratio-height {
+    display: inline-block;
+    max-width: 48%;
+}
+
+.items-per-slide-field-wrapper > div:not(:last-child) {
+    padding-bottom: 10px;
+}
+
+.show-on-slider,
+.show-on-slideshow {
+    display: none;
+}
+
+.cmb2-wrap > .cmb-field-list > .cmb-row {
+    padding-top: 0 !important;
+}
+
+.cmb2-wrap > .cmb-field-list > .cmb-row:last-of-type {
+    padding-bottom: 0 !important;
+}
+
+.cmb-th {
+    padding-bottom: 0 !important;
+}
