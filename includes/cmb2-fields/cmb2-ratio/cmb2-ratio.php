@@ -6,7 +6,7 @@ class CMB2_Type_Ratio {
 
 	private static $single_instance;
 
-	public static function get_instance() {
+	public static function instance() {
 		if ( null === self::$single_instance ) {
 			self::$single_instance = new self();
 		}
@@ -97,4 +97,4 @@ class CMB2_Type_Ratio {
 
 }
 
-CMB2_Type_Ratio::get_instance();
+CMB2_Type_Ratio::instance();

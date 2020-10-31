@@ -6,7 +6,7 @@ class CMB2_Type_Items_Per_Slide {
 
 	private static $single_instance;
 
-	public static function get_instance() {
+	public static function instance() {
 		if ( null === self::$single_instance ) {
 			self::$single_instance = new self();
 		}
@@ -105,4 +105,4 @@ class CMB2_Type_Items_Per_Slide {
 
 }
 
-CMB2_Type_Items_Per_Slide::get_instance();
+CMB2_Type_Items_Per_Slide::instance();

@@ -8,16 +8,19 @@ class FG_Slider_Shortcodes {
 
 	private static $instance = null;
 
-	public static function getInstance() {
+	/**
+	 * FG_Slider_Shortcodes constructor.
+	 */
+	private function __construct() {
+		add_action( 'init', array( $this, 'register_shortcodes' ) );
+	}
+
+	public static function instance() {
 		if ( self::$instance == null ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
-	}
-
-	public function init() {
-		add_action( 'init', array( $this, 'register_shortcodes' ) );
 	}
 
 	public function register_shortcodes() {
@@ -36,7 +39,7 @@ class FG_Slider_Shortcodes {
 			return '';
 		}
 
-		$slider = FG_Slider_Post_Type::getInstance()->get_slider( $args['id'] );
+		$slider = FG_Slider_Post_Type::instance()->get_slider( $args['id'] );
 
 		if ( empty( $slider['slides']['items'] ) || empty( $slider['options'] ) ) {
 			return '';
