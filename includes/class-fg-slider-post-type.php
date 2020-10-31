@@ -13,19 +13,16 @@ class FG_Slider_Post_Type {
 	 * FG_Guitars_Post_Type constructor.
 	 */
 	private function __construct() {
+		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'add_metaboxes' ) );
 	}
 
-	public static function getInstance() {
+	public static function instance() {
 		if ( self::$instance == null ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
-	}
-
-	public function init() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'add_metaboxes' ) );
 	}
 
 	/**
@@ -93,8 +90,8 @@ class FG_Slider_Post_Type {
 	 */
 	public function add_metaboxes() {
 
-		FG_Slider_Option_Fields::getInstance()->addMetaboxes( self::POST_TYPE_NAME, 'side', 'low' );
-		FG_Slider_Slides_Fields::getInstance()->addMetaboxes( self::POST_TYPE_NAME );
+		FG_Slider_Option_Fields::instance()->addMetaboxes( self::POST_TYPE_NAME, 'side', 'low' );
+		FG_Slider_Slides_Fields::instance()->addMetaboxes( self::POST_TYPE_NAME );
 	}
 
 	/**
@@ -126,9 +123,9 @@ class FG_Slider_Post_Type {
 
 		$slider_id = $item[0]->ID;
 
-		$options = FG_Slider_Option_Fields::getInstance()->getPostMeta( $slider_id );
+		$options = FG_Slider_Option_Fields::instance()->getPostMeta( $slider_id );
 
-		$slides = FG_Slider_Slides_Fields::getInstance()->getPostMeta( $slider_id );
+		$slides = FG_Slider_Slides_Fields::instance()->getPostMeta( $slider_id );
 
 		$slider = array_merge( $options, $slides );
 
