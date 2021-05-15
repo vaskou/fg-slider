@@ -179,7 +179,12 @@ class FG_Slider_Option_Fields extends FG_Slider_Post_Type_Fields {
 
 	private function _filter_field_classes( $fields ) {
 		foreach ( $fields as $key => &$value ) {
-			$classes = ! empty( $value['classes'] ) && is_array( $value['classes'] ) ? $value['classes'] : ! empty( $value['classes'] ) ? array( $value['classes'] ) : array();
+			if ( ! empty( $value['classes'] ) ) {
+				$classes = is_array( $value['classes'] ) ? $value['classes'] : array( $value['classes'] );
+			} else {
+				$classes = array();
+			}
+
 			if ( in_array( $key, $this->slider_fields_only ) ) {
 				$classes = array_merge( $classes, array( 'show-on-slider', 'show-on' ) );
 			}
