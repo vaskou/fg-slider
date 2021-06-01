@@ -1,0 +1,317 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FremeditiGuitars - Slider\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-09 17:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.0; wp-5.6.1\n"
+"X-Domain: fg-slider"
+
+#: includes/slider-fields/abstract-class-fg-slider-post-type-fields.php:124
+#, php-format
+msgid "Add Another %s"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:42
+msgid "Add New"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:41
+msgid "Add New FG Slider"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-slides-fields.php:30
+msgid "Add Slide"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:40
+msgid "All FG Sliders"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:42
+msgid "Animation"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:54
+msgid "Autoplay"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:63
+msgid "Autoplay Interval"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:110
+msgid "Center"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:59
+#: includes/slider-fields/class-fg-slider-option-fields.php:76
+#: includes/slider-fields/class-fg-slider-option-fields.php:93
+#: includes/slider-fields/class-fg-slider-option-fields.php:102
+#: includes/slider-fields/class-fg-slider-option-fields.php:115
+#: includes/slider-fields/class-fg-slider-option-fields.php:124
+#: includes/slider-fields/class-fg-slider-option-fields.php:148
+msgid "Disable"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:71
+msgid "Draggable"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:44
+msgid "Edit FG Slider"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:58
+#: includes/slider-fields/class-fg-slider-option-fields.php:75
+#: includes/slider-fields/class-fg-slider-option-fields.php:92
+#: includes/slider-fields/class-fg-slider-option-fields.php:101
+#: includes/slider-fields/class-fg-slider-option-fields.php:114
+#: includes/slider-fields/class-fg-slider-option-fields.php:123
+#: includes/slider-fields/class-fg-slider-option-fields.php:147
+msgid "Enable"
+msgstr ""
+
+#: includes/cmb2-fields/cmb2-items-per-slide/cmb2-items-per-slide.php:39
+msgid "Extra Large"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:46
+msgid "Fade"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:51
+msgid "Featured Image"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:70
+msgid "FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:37
+msgid "FG Slider Archives"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:38
+msgid "FG Slider Attributes"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:71
+msgid "FG Slider Description"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:34
+msgctxt "FG Slider Singular Name"
+msgid "FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:35
+#: includes/class-fg-slider-post-type.php:36
+msgid "FG Sliders"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:33
+msgctxt "FG Sliders General Name"
+msgid "FG Sliders"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:57
+msgid "FG Sliders list"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:58
+msgid "FG Sliders list navigation"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:59
+msgid "Filter FG Sliders list"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:88
+msgid "Finite"
+msgstr ""
+
+#. Name of the plugin
+msgid "FremeditiGuitars - Slider"
+msgstr ""
+
+#. Description of the plugin
+msgid "FremeditiGuitars - Slider - Slideshow"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-slides-fields.php:24
+msgid "Image"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:55
+msgid "Insert into FG Slider"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:128
+msgid "Items Per Slide"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:139
+#: includes/cmb2-fields/cmb2-items-per-slide/cmb2-items-per-slide.php:38
+msgid "Large"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-slides-fields.php:35
+msgid "Link"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:138
+#: includes/cmb2-fields/cmb2-items-per-slide/cmb2-items-per-slide.php:37
+msgid "Medium"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:143
+msgid "Navigation Arrows"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:43
+msgid "New FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-shortcodes.php:112
+msgid "Next"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:136
+msgid "None"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:49
+msgid "Not found"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:50
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:39
+msgid "Parent FG Slider:"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:97
+msgid "Pause On Hover"
+msgstr ""
+
+#: includes/class-fg-slider-shortcodes.php:111
+msgid "Previous"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:47
+msgid "Pull"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:48
+msgid "Push"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:106
+msgid "Ratio"
+msgstr ""
+
+#: includes/slider-fields/abstract-class-fg-slider-post-type-fields.php:125
+#, php-format
+msgid "Remove %s"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:53
+msgid "Remove Featured Image"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:49
+msgid "Scale"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:48
+msgid "Search FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:52
+msgid "Set Featured Image"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:119
+msgid "Sets"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:50
+#: includes/slider-fields/class-fg-slider-slides-fields.php:20
+msgid "Slide"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:37
+msgid "Slider"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:30
+msgid "Slider Options"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-slides-fields.php:17
+msgid "Slides"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:132
+msgid "Slides Gap"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:38
+msgid "Slideshow"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:137
+#: includes/cmb2-fields/cmb2-items-per-slide/cmb2-items-per-slide.php:36
+msgid "Small"
+msgstr ""
+
+#: includes/class-fg-slider-dependencies.php:48
+#, php-format
+msgid ""
+"The FremeditiGuitars - Slider plugin requires <a href=\"%s\">CMB2</a> to be "
+"installed and active."
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-slides-fields.php:39
+msgid "Title"
+msgstr ""
+
+#: includes/slider-fields/class-fg-slider-option-fields.php:33
+msgid "Type"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:45
+msgid "Update FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:56
+msgid "Uploaded to this FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:54
+msgid "Use as Featured Image"
+msgstr ""
+
+#. Author of the plugin
+msgid "Vasilis Koutsopoulos"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:46
+msgid "View FG Slider"
+msgstr ""
+
+#: includes/class-fg-slider-post-type.php:47
+msgid "View FG Sliders"
+msgstr ""

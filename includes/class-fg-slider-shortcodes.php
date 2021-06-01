@@ -108,8 +108,8 @@ class FG_Slider_Shortcodes {
 				<?php
 				if ( ! empty( $options['navigation_arrows'] ) && 'true' == $options['navigation_arrows'] ):
 					?>
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-<?php echo $type; ?>-item="previous"></a>
-                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-<?php echo $type; ?>-item="next"></a>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-<?php echo $type; ?>-item="previous" title="<?php _e( 'Previous', 'fg-slider' ); ?>"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-<?php echo $type; ?>-item="next" title="<?php _e( 'Next', 'fg-slider' ); ?>"></a>
 				<?php
 				endif;
 				?>
